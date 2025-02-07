@@ -1,4 +1,14 @@
 # datafun-05-sql
+# Specification for Project 5 SQL Module
+
+## Overview
+
+Project 5 integrates Python and SQL,
+focusing on database interactions using SQLite.
+The project involves creating and managing a database, building a schema, and performing various SQL operations,
+including queries with joins, filters, and aggregations.
+
+---
 ## **How to Install and Run the Project**
 ---
 ### **Step 1. Create a New Repo in GitHub**
