@@ -1,4 +1,4 @@
-# use WHERE to filter data based on conditions.
+-- use WHERE to filter data based on conditions.
 -- Select movies of a specific genre
 SELECT * FROM movies WHERE genre = 'Action';
 
