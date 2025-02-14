@@ -33,7 +33,7 @@ def execute_sql_file(cursor, filename):
             sql_script = file.read()
             cursor.executescript(sql_script)
     else:
-        print(f"Warning: {filename} not found in {data_folder}")
+        print(f"Warning: {filename} not found in {sql_queries_folder}")
 
 def fetch_query_results(cursor, query):
     """Executes a query and fetches the results."""
