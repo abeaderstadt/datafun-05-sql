@@ -1,6 +1,7 @@
-# use ORDER BY to sort data.
--- Sort movies by release year in ascending order
-SELECT * FROM movies ORDER BY release_year;
+-- use ORDER BY to sort data.
 
--- Sort movies by title in descending order
-SELECT * FROM movies ORDER BY title DESC;
+-- Sort books by published year in ascending order
+SELECT * FROM books ORDER BY year_published;
+
+-- Sort authors first name in descending order
+SELECT * FROM authors ORDER BY first_name DESC;

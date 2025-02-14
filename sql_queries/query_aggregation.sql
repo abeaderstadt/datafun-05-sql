@@ -1,9 +1,10 @@
-# use aggregation functions including COUNT, AVG, SUM.
--- count all rows
-SELECT COUNT(*) FROM sales;
+-- use aggregation functions including COUNT, AVG, SUM.
 
--- get average amount
-SELECT AVG(amount) FROM sales;
+-- count all rows in the authors table
+SELECT COUNT(*) FROM authors;
 
--- combine functions
-SELECT SUM(amount), AVG(amount), COUNT(*) FROM sales;
+-- get average retail price of books
+SELECT AVG(retail_price) FROM books;
+
+-- get the total retail price of all books
+SELECT SUM(retail_price) FROM books;

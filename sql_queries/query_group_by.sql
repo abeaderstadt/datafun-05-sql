@@ -1,6 +1,11 @@
-# use GROUP BY clause (and optionally with aggregation)
+-- use GROUP BY clause (and optionally with aggregation)
 
--- Get the total sales and average sales amount by a salesperson
-SELECT salesperson_id, SUM(amount), AVG(amount) 
-FROM sales 
-GROUP BY salesperson_id;
+-- select books of a specific genre
+SELECT * FROM books WHERE genre = 'Fantasy';
+
+-- count books per genre
+SELECT genre, COUNT(*) AS book_count
+FROM books
+WHERE genre IS NOT NULL  -- To ensure you don't include books with no genre
+GROUP BY genre
+HAVING COUNT(*) > 5;
