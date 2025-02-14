@@ -12,13 +12,9 @@ data_folder = pathlib.Path("data")
 authors_csv_path = data_folder / "authors.csv"
 books_csv_path = data_folder / "books.csv"
 
-# Define the folder containing SQL files 
-sql_folder = pathlib.Path("sql_create") 
+# Define the folder containing SQL files  
 sql_features_folder = pathlib.Path("sql_features")
 sql_files = [
-    sql_folder / "01_drop_tables.sql",
-    sql_folder / "02_create_tables.sql",
-    sql_folder / "03_insert_records.sql",
     sql_features_folder / "delete_records.sql",
     sql_features_folder / "update_records.sql"
 ]
