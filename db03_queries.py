@@ -39,7 +39,6 @@ def execute_query(query):
 def plot_genre_book_count(df):
     """Plots a bar chart for book count per genre."""
     if not df.empty:
-        # Plot a bar chart of book count per genre
         df.plot(kind='bar', x='genre', y='book_count', title="Books Per Genre", legend=False)
         plt.ylabel('Book Count')
         plt.xlabel('Genre')
