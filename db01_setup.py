@@ -31,7 +31,7 @@ def create_database():
 
 def execute_sql_file(cursor, filename):
     """ Reads an SQL file and executes its commands. """
-    sql_path = sql_folder / filename.name  # Correct
+    sql_path = sql_folder / filename.name  
     if sql_path.exists():
         with open(sql_path, 'r', encoding='utf-8') as file:
             sql_script = file.read()
@@ -43,7 +43,7 @@ def execute_sql_file(cursor, filename):
 def setup_database():
     """ Connects to SQLite, executes SQL files, and sets up the database. """
     try:
-        create_database()  # Ensure the database exists first
+        create_database()  
         conn = sqlite3.connect(db_file)
         cursor = conn.cursor()
 

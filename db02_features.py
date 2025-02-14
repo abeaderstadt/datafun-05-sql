@@ -2,7 +2,7 @@ import sqlite3
 import logging
 
 # Define database path
-db_file = "project.sqlite3"  # Database path
+db_file = "project.sqlite3"  
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
