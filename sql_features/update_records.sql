@@ -1,10 +1,11 @@
-# update 1 or more records in a table.
--- Update the genre of a movie
-UPDATE movies
-SET genre = 'Adventure'
-WHERE title = 'The Dark Knight';
+-- update 1 or more records in a table.
 
--- Correct the release year of a movie
-UPDATE movies
-SET release_year = 2008
-WHERE title = 'Pulp Fiction';
+-- Update the genre of a book
+UPDATE books
+SET genre = 'Fantasy'
+WHERE title = 'Twilight';
+
+-- Correct the retail price of a book
+UPDATE books
+SET retail_price = 9.99
+WHERE title = 'Harry Potter and the Sorcerer’s Stone';
