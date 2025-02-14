@@ -1,16 +1,16 @@
 import sqlite3
 import pandas as pd
 import pathlib
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
 # Define database path
 db_file = "project.sqlite3"  
 
 # Define the folder containing CSV files
 data_folder = pathlib.Path("data")
-
-# Define CSV file paths
-authors_csv_path = data_folder / "authors.csv"
-books_csv_path = data_folder / "books.csv"
 
 # Define the folder containing SQL files 
 sql_folder = pathlib.Path("sql_create") 
@@ -25,9 +25,9 @@ def create_database():
     try:
         conn = sqlite3.connect(db_file)  
         conn.close()  
-        print(f"Database '{db_file}' created successfully.")
+        logging.info(f"Database '{db_file}' created successfully.")
     except sqlite3.Error as e:
-        print(f"SQLite error while creating database: {e}")
+        logging.error(f"SQLite error while creating database: {e}")
 
 def execute_sql_file(cursor, filename):
     """ Reads an SQL file and executes its commands. """
@@ -36,8 +36,9 @@ def execute_sql_file(cursor, filename):
         with open(sql_path, 'r', encoding='utf-8') as file:
             sql_script = file.read()
             cursor.executescript(sql_script)
+        logging.info(f"Executed SQL file: {filename}")
     else:
-        print(f"Warning: {filename} not found in {data_folder}")
+        logging.warning(f"Warning: {filename} not found in {data_folder}")
 
 def setup_database():
     """ Connects to SQLite, executes SQL files, and sets up the database. """
@@ -46,22 +47,22 @@ def setup_database():
         conn = sqlite3.connect(db_file)
         cursor = conn.cursor()
 
-        print("Connected to database successfully.")
+        logging.info("Connected to database successfully.")
 
         # Execute SQL files in order
         for sql_file in sql_files:
-            print(f"Executing {sql_file}...")
+            logging.info(f"Executing {sql_file}...")
             execute_sql_file(cursor, sql_file)
 
         conn.commit()
-        print("Database setup completed successfully.")
+        logging.info("Database setup completed successfully.")
 
     except sqlite3.Error as e:
-        print(f"SQLite error: {e}")
+        logging.error(f"SQLite error: {e}")
 
     finally:
         conn.close()
-        print("Database connection closed.")
+        logging.info("Database connection closed.")
 
 # Main function to run the setup
 def main():
