@@ -8,4 +8,4 @@ SELECT genre, COUNT(*) AS book_count
 FROM books
 WHERE genre IS NOT NULL  -- To ensure you don't include books with no genre
 GROUP BY genre
-HAVING COUNT(*) > 5;
+HAVING COUNT(*) > 1;

@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import pathlib
+import matplotlib.pyplot as plt 
 
 # Define database path
 db_file = "project.sqlite3"
@@ -33,13 +34,21 @@ def execute_sql_files():
         try:
             with open(sql_file, 'r', encoding='utf-8') as file:
                 sql_script = file.read()
-                # Split the script into individual queries (statements separated by semicolons)
                 queries = [query.strip() for query in sql_script.split(';') if query.strip()]
                 
                 for query in queries:
                     result_df = execute_query(query)
                     print(f"Query Results for:\n{query}\n")
                     print(result_df)
+
+                    # Create a bar chart of 'genre' and 'book_count' 
+                    if 'genre' in result_df.columns and 'book_count' in result_df.columns:
+                        # Plotting the bar chart for the results
+                        result_df.plot(kind='bar', x='genre', y='book_count', title="Books Per Genre", legend=False)
+                        plt.xlabel("Genre")
+                        plt.ylabel("Book Count")
+                        plt.show()
+
         except FileNotFoundError:
             print(f"Error: {sql_file} not found.")
 
