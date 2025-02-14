@@ -1,12 +1,16 @@
 -- use WHERE to filter data based on conditions.
--- Select movies of a specific genre
-SELECT * FROM movies WHERE genre = 'Action';
 
--- Select movies released after a certain year
-SELECT * FROM movies WHERE release_year > 2000;
+-- Select books of a specific genre
+SELECT * FROM books WHERE genre = 'Fantasy';
 
--- Select movies directed by a specific director
-SELECT * FROM movies WHERE director = 'Quentin Tarantino';
+-- Select books published after a certain year
+SELECT * FROM books WHERE year_published > 2000;
+
+-- Select books written by a specific autho
+SELECT * FROM books WHERE author_id = 'b43b5599-9df4-43ea-b66e-2140e5f967d0';
 
 -- Use distinct and combine conditions
-SELECT DISTINCT director FROM movies WHERE Year > 2000 AND Year < 2020;
+SELECT DISTINCT authors.first_name, authors.last_name
+FROM authors
+INNER JOIN books ON authors.author_id = books.author_id
+WHERE books.year_published > 2000 AND books.year_published < 2020;
