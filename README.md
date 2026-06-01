@@ -1,4 +1,5 @@
 # datafun-05-sql
+Alissa Beaderstadt - Graduate Student - Data Analytics
 
 [![Python](https://img.shields.io/badge/python-3.14-blue?logo=python&logoColor=white)](https://www.python.org/)
 
