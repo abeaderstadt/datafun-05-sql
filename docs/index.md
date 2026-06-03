@@ -27,13 +27,13 @@ I used the library dataset that includes two related tables: branch and checkout
 The main signals in this project were checkout activity and fine amounts. I also created a derived signal called fine_per_day, which calculates how much fine revenue is generated relative to the total checkout duration. This helps normalize performance across branches.
 
 ### Experiments
-I ran a series of SQL queries to explore the data, starting with basic counts and aggregations. Then I modified my KPI query by adding the derived metric fine_per_day. This allowed me to compare branches not just by total fines, but by how efficiently those fines are generated relative to checkout duration.
+I updated all 7 SQL files and the Python pipeline script to use the library dataset instead of the original retail template data, ensuring the full ETL process worked end-to-end. I then ran my custom SQL queries starting with basic counts and aggregations to explore the dataset. After that, I modified my KPI query by adding the derived metric fine_per_day, which allowed me to compare branches not just by total fines, but by how efficiently those fines are generated relative to checkout duration.
 
 ### Results
 The pipeline ran successfully and returned consistent results across all queries. The Downtown Branch showed the highest total fines as well as the highest fine_per_day value at 0.0714. Other branches had lower totals and lower efficiency values, showing clear differences in performance.
 
 ### Interpretation
-This shows that branch performance can look very different depending on how you measure it. Looking only at total fines makes the Downtown Branch stand out, but the fine_per_day metric adds more context by showing how efficiently those fines are generated. Overall, it highlights how derived metrics can give a more complete picture of library activity and help identify which branches are performing more effectively.
+This shows that branch performance can look very different depending on how you measure it. Looking only at total fines makes the Downtown Branch stand out, but the fine_per_day metric adds more context by showing how efficiently those fines are generated. This really highlights how derived metrics can give a more complete picture of library activity and help identify which branches are performing more effectively.
 
 ### Terminal Output (Proof of Execution)
 2026-06-02 20:17:12 | INFO | P05 | === RUN START ===
