@@ -24,10 +24,10 @@ To customize, modify:
 I used the library dataset that includes two related tables: branch and checkout. The branch data contains information about each library location, and the checkout data tracks individual checkouts, including material type, duration, fine amount, and date.
 
 ### Signals
-The main signals in this project were checkout activity and fine amounts. I also created a derived signal called fine_per_day, which calculates how much fine revenue is generated relative to the total checkout duration. This helps normalize performance across branches.
+The main signals in this project came from checkout activity and fine amounts in the dataset. This included values like checkout_duration, fine_amount, and branch_location. I also created a derived field called fine_per_day, which normalizes fines by checkout duration. These signals were used to compare branch performance and understand differences in efficiency.
 
 ### Experiments
-I updated all 7 SQL files and the Python pipeline script to use the library dataset instead of the original retail template data, ensuring the full ETL process worked end-to-end. I then ran my custom SQL queries starting with basic counts and aggregations to explore the dataset. After that, I modified my KPI query by adding the derived metric fine_per_day, which allowed me to compare branches not just by total fines, but by how efficiently those fines are generated relative to checkout duration.
+I updated all 7 SQL files and the Python pipeline script to use the library dataset instead of the original retail template data, ensuring the full ETL process worked end-to-end. Then I ran my custom SQL queries starting with basic counts and aggregations to explore the dataset. After that, I modified my KPI query by adding the derived metric fine_per_day, which allowed me to compare branches not just by total fines, but by how efficiently those fines are generated relative to checkout duration.
 
 ### Results
 The pipeline ran successfully and returned consistent results across all queries. The Downtown Branch showed the highest total fines as well as the highest fine_per_day value at 0.0714. Other branches had lower totals and lower efficiency values, showing clear differences in performance.
