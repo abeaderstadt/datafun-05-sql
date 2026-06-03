@@ -146,7 +146,9 @@ def main() -> None:
         # ----------------------------------------------------
         run_sql_query(con, SQL_DIR / "beaderstadt_library_query_branch_count.sql")
         run_sql_query(con, SQL_DIR / "beaderstadt_library_query_checkout_count.sql")
-        run_sql_query(con, SQL_DIR / "beaderstadt_library_query_checkouts_by_branch.sql")
+        run_sql_query(
+            con, SQL_DIR / "beaderstadt_library_query_checkouts_by_branch.sql"
+        )
 
         # ----------------------------------------------------
         # STEP 4: RUN KPI QUERY (ACTION-DRIVEN)

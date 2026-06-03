@@ -102,4 +102,3 @@ GROUP BY
   b.city,
   b.system_name
 ORDER BY total_fine_amount DESC, checkout_count DESC;
-
