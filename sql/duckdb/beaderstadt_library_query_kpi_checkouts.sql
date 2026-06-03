@@ -15,7 +15,7 @@
 -- - identify underperforming branches
 -- - improve library resource planning
 --
--- In this example, our KPI is Total fines collected by branch + checkout activity
+-- In this example, our KPI is Total fines collected by branch + checkout activity + efficiency metric (fine per day)
 --
 -- ANALYST RESPONSIBILITY:
 -- Analysts are responsible for determining HOW to get the information
@@ -63,16 +63,18 @@
 -- - total_fine_amount = SUM(checkout.fine_amount)
 -- - checkout_count = COUNT(checkout.checkout_id)
 -- - avg_fine_amount = AVG(checkout.fine_amount)
+-- - fine_per_day = SUM(fine_amount) / SUM(duration_days)
 --
 -- GRAIN (LEVEL OF DETAIL):
 -- - one row per branch
 --
 -- OUTPUT (WHAT DECISION-MAKERS NEED):
--- - branch identifier and name
+-- - branch id and name
 -- - branch location (city, system)
 -- - total number of checkouts
--- - total fines collected
+-- - total fines
 -- - average fine per checkout
+-- - fine efficiency (fine per day of checkout duration)
 --
 --
 -- ============================================================
@@ -81,9 +83,7 @@
 -- Strategy:
 -- - JOIN branch (1) to checkout (M)
 -- - GROUP BY branch
--- - SUM fine amounts to measure total fines
--- - COUNT checkouts to measure usage volume
--- - ORDER results to highlight highest activity branches
+-- - compute aggregates and derived efficiency metric
 --
 SELECT
   b.branch_id,
@@ -92,7 +92,12 @@ SELECT
   b.system_name,
   COUNT(c.checkout_id) AS checkout_count,
   ROUND(SUM(c.fine_amount), 2) AS total_fine_amount,
-  ROUND(AVG(c.fine_amount), 2) AS avg_fine_amount
+  ROUND(AVG(c.fine_amount), 2) AS avg_fine_amount,
+
+  ROUND(
+    SUM(c.fine_amount) / NULLIF(SUM(c.duration_days), 0),
+    4
+  ) AS fine_per_day
 FROM branch AS b
 JOIN checkout AS c
   ON c.branch_id = b.branch_id
